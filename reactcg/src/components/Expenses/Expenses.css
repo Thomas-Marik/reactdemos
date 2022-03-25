@@ -1,7 +1,9 @@
-.app {
+.expenses {
   display: flex;
-  flex: 1;
   flex-direction: column;
+  background-color: #272727;
+  width: 60%;
   justify-content: center;
+  padding: 20px;
   align-items: center;
 }
