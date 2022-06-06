@@ -7,7 +7,7 @@ import ErrorModal from "../UI/ErrorModal";
 const AddUser = (props) => {
   const [userName, setUserName] = useState("");
   const [age, setAge] = useState("");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState();
 
   const nameChangeHandler = (event) => {
     setUserName(event.target.value);
@@ -16,6 +16,7 @@ const AddUser = (props) => {
     setAge(event.target.value);
   };
   const addUserHandler = (event) => {
+    event.preventDefault();
     if (userName.trim().length === 0 || age.trim().length === 0) {
       setError({
         title: "Invalid Input",
@@ -30,11 +31,10 @@ const AddUser = (props) => {
       });
       return;
     }
-    event.preventDefault();
 
     props.onAddUser(userName, age);
-    setUserName();
-    setAge();
+    setUserName("");
+    setAge("");
   };
 
   const errorHandler = () => {
